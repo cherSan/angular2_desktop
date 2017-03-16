@@ -1,0 +1,13 @@
+<md-card>
+  <md-card-header>
+    <md-card-title>{{item.snippet.title}}</md-card-title>
+    <md-card-subtitle>{{item.snippet.publishedAt | date : "dd.MM.yyyy"}}</md-card-subtitle>
+  </md-card-header>
+
+  <img *ngIf="!isPlay" md-card-image [src]="item.snippet.thumbnails.high.url">
+  <ch-player *ngIf="isPlay" md-card-image [video]="item"></ch-player>
+
+  <md-card-content>
+    {{item.snippet.description}}
+  </md-card-content>
+</md-card>

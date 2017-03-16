@@ -1,0 +1,9 @@
+:host {
+  md-card {
+    md-card-content {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+}

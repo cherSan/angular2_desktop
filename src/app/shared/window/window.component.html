@@ -1,0 +1,46 @@
+<div class="resize top"
+     draggable="true"
+     (drag)="window.resize($event, 'top')"
+     (dragstart)="window.resizeStart($event, 'top')"
+     (dragend)="window.resizeEnd($event, 'top')"
+></div>
+<div class="resize bottom"
+     draggable="true"
+     (drag)="window.resize($event, 'bottom')"
+     (dragstart)="window.resizeStart($event, 'bottom')"
+     (dragend)="window.resizeEnd($event, 'bottom')"
+></div>
+<div class="resize right"
+     draggable="true"
+     (drag)="window.resize($event, 'right')"
+     (dragstart)="window.resizeStart($event, 'right')"
+     (dragend)="window.resizeEnd($event, 'right')"
+></div>
+<div class="resize left"
+     draggable="true"
+     (drag)="window.resize($event, 'left')"
+     (dragstart)="window.resizeStart($event, 'left')"
+     (dragend)="window.resizeEnd($event, 'left')"
+></div>
+
+<div class="window" layout="column" flex>
+
+  <div  draggable="true"
+        class="header"
+        layout="row"
+        (drag)="window.drag($event)"
+        (dragstart)="window.dragStart($event)"
+        (dragend)="window.dragEnd($event)"
+  >
+    <div>DRUGHERE</div>
+    <div class="spacer"></div>
+    <md-icon (click)="hide()"> apps </md-icon>
+    <md-icon (click)="fullscreen()" *ngIf="!_fullscreen"> fullscreen </md-icon>
+    <md-icon (click)="default()" *ngIf="_fullscreen"> fullscreen_exit </md-icon>
+    <md-icon (click)="close()"> close </md-icon>
+  </div>
+
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

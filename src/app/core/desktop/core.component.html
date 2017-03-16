@@ -1,0 +1,11 @@
+<a (click)="openWindow('youtube', 'list')">YOUTUBE</a>
+<a (click)="openWindow('profile', 'main')">PROFILE</a>
+
+<router-outlet></router-outlet>
+
+<router-outlet #youtube name="youtube" application="youtube"></router-outlet>
+<router-outlet #profile name="profile" application="profile"></router-outlet>
+
+<div class="control-panel">
+  <ch-control-panel></ch-control-panel>
+</div>

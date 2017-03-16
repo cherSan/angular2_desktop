@@ -1,0 +1,11 @@
+<div class="panel" layout="row" flex layout-align="left center">
+  <div *ngFor="let window of windows">
+    <button md-button (click)="openOrActivate(window.id)" *ngIf="window.id == activeWindow">
+      {{window.id}}
+    </button>
+    <button md-raised-button (click)="openOrActivate(window.id)" *ngIf="window.id != activeWindow">
+      {{window.id}}
+    </button>
+  </div>
+
+</div>

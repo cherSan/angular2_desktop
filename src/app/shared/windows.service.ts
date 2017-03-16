@@ -45,7 +45,7 @@ export class WindowsService {
   public hide = (id: string) => {
     let windows = this._windows.getValue();
     windows[id].hide = true;
-    this._windows.next(Object.assign({},windows));
+    this._windows.next(windows);
     this.setActive();
   };
 

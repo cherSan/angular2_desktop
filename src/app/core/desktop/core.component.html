@@ -1,5 +1,15 @@
-<a (click)="openWindow('youtube', 'list')">YOUTUBE</a>
-<a (click)="openWindow('profile', 'main')">PROFILE</a>
+<div layout="row" flex class="desktop">
+  <div layout="column">
+    <span (click)="openWindow('profile', 'main')">
+      <md-icon>face</md-icon>
+      <div>Profile</div>
+    </span>
+    <span (click)="openWindow('youtube', 'list')">
+      <md-icon>video_library</md-icon>
+      <div>Video</div>
+    </span>
+  </div>
+</div>
 
 <router-outlet></router-outlet>
 

@@ -1,24 +1,24 @@
 :host {
-  .player {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    .player-header {
-      height: 100px;
-      background: #000;
-      color: #fff;
-      font-size: 50px;
-      line-height: 100px;
-      padding: 50px;
+  display: block;
+  width: 100%;
+  height: 100%;
+  .window-content {
+    height: auto;
+    .navigation-panel {
+      background: #6ba8e5;
+      md-list {
+        md-list-item {
+          cursor: pointer;
+          &.active {
+            -webkit-box-shadow: inset 0px 0px 5px 2px rgba(0,0,0,0.75);
+            -moz-box-shadow: inset 0px 0px 5px 2px rgba(0,0,0,0.75);
+            box-shadow: inset 0px 0px 5px 2px rgba(0,0,0,0.75);
+          }
+        }
+      }
     }
-    .player-container {
-      position: fixed;
-      top:200px;
-      bottom: 0;
-      left: 0;
-      right: 0;
+    .content {
+      padding: 10px;
     }
   }
 }

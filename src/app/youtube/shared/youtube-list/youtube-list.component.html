@@ -1,10 +1,18 @@
-<button (click)="getVideo('prev')" >PREV</button>
-<button (click)="getVideo('next')" >NEXT</button>
-<!--<div layout="column" flex>-->
-  <!--<div *ngFor="let i of _rows" layout="row" layout-align="space-around stretch">-->
-    <!--<div *ngFor="let video of videos | slice:(i*3):(i+1)*3" flex-gt-sm="33" [routerLink]="[{ outlets: { modal: ['video', video.id.videoId] } }]">-->
-      <!--<ch-list-item [item]="video"></ch-list-item>-->
-    <!--</div>-->
-  <!--</div>-->
-<!--</div>-->
+<div class="window-content" layout="row" flex layout-fill>
+  <div class="navigation-panel" flex-gt-sm="20">
+    <button md-button (click)="getVideo('prev')" >PREV</button>
+    <button md-button (click)="getVideo('next')" >NEXT</button>
+    <md-list>
+      <md-list-item *ngFor="let video of videos" [routerLink]="['.', video.id.videoId]" routerLinkActive="active">
+        <img md-list-avatar [src]="video.snippet.thumbnails.default.url">
+        <h4 md-line>{{video.snippet.title}}</h4>
+        <p md-line>{{video.snippet.publishedAt | date : "dd.MM.yyyy"}}</p>
+      </md-list-item>
+    </md-list>
+  </div>
+
+  <div class="content" flex-gt-sm="80">
+    <router-outlet></router-outlet>
+  </div>
+</div>
 

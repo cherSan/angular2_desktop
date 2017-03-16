@@ -1,4 +1,20 @@
 :host {
+  .desktop {
+    span {
+      padding: 20px;
+      cursor: pointer;
+      transition: .2s;
+      &:hover {
+        transform: scale(1.1);
+      }
+      md-icon {
+        font-size: 50px;
+      }
+      div {
+        text-align: center;
+      }
+    }
+  }
   .control-panel {
     position: fixed;
     bottom: 0;

@@ -17,7 +17,8 @@ export class WindowComponent implements OnInit, AfterViewInit {
 
   private _fullscreen: boolean = false;
 
-  @HostBinding('class.drag')    dragOrResizeProcess: boolean = false;
+  @HostBinding('class.drag')    drag: boolean = false;
+  @HostBinding('class.resize')  resize: boolean = false;
   @HostBinding('class.active')  windowActive: boolean = false;
   @HostBinding('class.hide')    windowHide: boolean = false;
 
@@ -27,6 +28,9 @@ export class WindowComponent implements OnInit, AfterViewInit {
 
   private _resize(ev, type) {
     let dx;
+    if( ev.x == 0 && ev.y == 0 ) {
+      return false;
+    }
     switch (type) {
       case 'left':
         let left = ev.x > 0 ? ev.x : 0;
@@ -58,31 +62,31 @@ export class WindowComponent implements OnInit, AfterViewInit {
 
   private window = {
     dragStart: (ev) => {
-      this.dragOrResizeProcess = true;
-
-      this.fromX = ev.x;
-      this.fromY = ev.y;
+      this.drag = true;
+      this.fromX = ev.screenX;
+      this.fromY = ev.screenY;
       this.windowLeft = this._service.left;
       this.windowRight = this._service.right;
       this.windowTop = this._service.top;
       this.windowBottom = this._service.bottom;
     },
     drag: (ev) => {
-      let dx = ev.x - this.fromX,
-          dy = ev.y - this.fromY;
+      let dx = ev.screenX - this.fromX,
+          dy = ev.screenY - this.fromY;
 
       this._service.setPosition(this.windowLeft+dx, this.windowTop+dy, this.windowRight-dx, this.windowBottom-dy);
     },
     dragEnd: (ev) => {
-      this.dragOrResizeProcess = false;
+      this.drag = false;
 
-      let dx = ev.x - this.fromX,
-          dy = ev.y - this.fromY;
+      let dx = ev.screenX - this.fromX,
+          dy = ev.screenY - this.fromY;
+
       this._service.setPosition(this.windowLeft+dx, this.windowTop+dy, this.windowRight-dx, this.windowBottom-dy);
     },
 
     resizeStart: (ev, type) => {
-      this.dragOrResizeProcess = true;
+      this.resize = true;
 
       this.fromX = ev.x;
       this.fromY = ev.y;
@@ -95,7 +99,7 @@ export class WindowComponent implements OnInit, AfterViewInit {
       this._resize(ev, type)
     },
     resizeEnd: (ev, type) => {
-      this.dragOrResizeProcess = false;
+      this.resize = false;
       this._resize(ev, type)
     },
   };

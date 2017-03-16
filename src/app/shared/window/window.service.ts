@@ -51,6 +51,19 @@ export class WindowService {
       right = 0;
     }
 
+    if( this._window.nativeElement.offsetWidth < 400 ) {
+      left = left > this._left ? this._left : left;
+      right = right > this._right ? this._right : right;
+    }
+    if( this._window.nativeElement.offsetHeight < 200 ) {
+      top = top > this._top ? this._top : top;
+      bottom = bottom > this._bottom ? this._bottom :bottom;
+    }
+
+    this.initPosition(left, top, right, bottom);
+  };
+
+  private initPosition = (left: number, top: number, right: number, bottom: number) => {
     this._window.nativeElement.style.left   = `${left}px`;
     this._window.nativeElement.style.top    = `${top}px`;
     this._window.nativeElement.style.bottom = `${bottom}px`;
@@ -70,7 +83,7 @@ export class WindowService {
     this._windowId = id;
     this._window = el;
     let count = this._windows.count;
-    this.setPosition(50*count, 50*count, 600-(50*count), 600-(50*count));
+    this.initPosition(50*count, 50*count, 600-(50*count), 600-(50*count));
     this._windows.register(id, el);
   };
 

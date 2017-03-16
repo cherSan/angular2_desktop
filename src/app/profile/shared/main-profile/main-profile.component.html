@@ -1,1 +1,14 @@
-main-profile works!
+<div class="window-content" layout="row" flex layout-fill>
+  <div class="navigation-panel" flex-gt-sm="20">
+    <md-list>
+      <md-list-item *ngFor="let user of users" [routerLink]="['.', user.href]" routerLinkActive="active">
+        <md-icon md-list-avatar>face</md-icon>
+        <h4 md-line>{{user.name}}</h4>
+      </md-list-item>
+    </md-list>
+  </div>
+
+  <div class="content" flex-gt-sm="80">
+    <router-outlet></router-outlet>
+  </div>
+</div>

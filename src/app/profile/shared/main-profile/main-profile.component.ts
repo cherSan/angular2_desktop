@@ -9,6 +9,25 @@ export class MainProfileComponent implements OnInit {
 
   constructor() { }
 
+  users = [
+    {
+      name: "Aleksandr",
+      href: 'aleksandr'
+    },
+    // {
+    //   name: "Olesia",
+    //   href: 'olesia'
+    // },
+    // {
+    //   name: "Marina",
+    //   href: 'marina'
+    // },
+    // {
+    //   name: "Nikolay",
+    //   href: 'nikolay'
+    // }
+  ];
+
   ngOnInit() {
   }
 

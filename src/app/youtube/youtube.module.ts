@@ -11,6 +11,12 @@ const router: Routes = [
   {
     path: "",
     component: YoutubeListComponent,
+    children: [
+      {
+        path: ":videoId",
+        component: YoutubeVideoComponent
+      }
+    ]
   }
 ];
 

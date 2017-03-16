@@ -8,6 +8,11 @@ import {ControlPanelComponent} from "../shared/control-panel/control-panel.compo
 
 const router: Routes = [
   {
+    path: "",
+    pathMatch: "full",
+    redirectTo: "desktop"
+  },
+  {
     path: "desktop",
     component: CoreComponent,
     children: [
